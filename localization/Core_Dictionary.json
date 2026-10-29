@@ -1,6 +1,6 @@
 {
   "description": "Cursor 通用界面主词典。修改后重新运行 Cursor_Localization_Tool.py 注入生效。",
-  "updatedAt": "2026-07-15",
+  "updatedAt": "2026-10-27",
   "sections": [
     {
       "id": "左侧导航栏",
@@ -13,6 +13,14 @@
         [
           "Agents",
           "智能体"
+        ],
+        [
+          "Projects",
+          "项目"
+        ],
+        [
+          "New Project",
+          "新建项目"
         ],
         [
           "Tab",
@@ -771,6 +779,26 @@
         [
           "Contact Us",
           "联系我们"
+        ],
+        [
+          "Shortcuts",
+          "快捷键"
+        ],
+        [
+          "Get Cursor for iOS",
+          "获取 Cursor iOS 版"
+        ],
+        [
+          "Get Grok Bot",
+          "获取 Grok Bot"
+        ],
+        [
+          "Meet Grok Bot",
+          "认识 Grok Bot"
+        ],
+        [
+          "AI teammates you can give real work to",
+          "可以把真实工作交给它们的 AI 队友"
         ],
         [
           "Motion",
@@ -8361,6 +8389,10 @@
       "title": "标题栏 (Title Bar)",
       "entries": [
         [
+          "IDE",
+          "编辑器"
+        ],
+        [
           "Open Cursor Settings",
           "打开 Cursor 设置"
         ],
@@ -10499,6 +10531,14 @@
         [
           "Send follow-up",
           "发送后续消息"
+        ],
+        [
+          "Send follow-up with subagent",
+          "让子智能体发送后续消息"
+        ],
+        [
+          "Continue chatting in Cursor",
+          "在 Cursor 中继续聊天"
         ],
         [
           "Created via Desktop",

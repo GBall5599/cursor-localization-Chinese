@@ -897,7 +897,7 @@
 
     function FanYi_ShuXing(el) {
         if (!el || !el.getAttribute) return;
-        var attrs = ['title', 'aria-label', 'alt', 'placeholder', 'aria-placeholder', 'data-tooltip', 'data-title'];
+        var attrs = ['title', 'aria-label', 'alt', 'placeholder', 'aria-placeholder', 'data-placeholder', 'data-tooltip', 'data-title'];
         for (var i = 0; i < attrs.length; i++) {
             var val = el.getAttribute(attrs[i]);
             if (!val) continue;
@@ -1231,7 +1231,13 @@
                 var inPromptBar = Shi_PromptBar_QuYu(node);
                 if (!inPromptBar) {
                     if (node.classList && (node.classList.contains('overflow-guard') || node.classList.contains('view-lines') || node.classList.contains('editor-scrollable'))) continue;
-                    if (node.getAttribute('contenteditable') === 'true') continue;
+                    // 智能体窗口的输入框类名不含 prompt-bar，整棵 contenteditable 会被跳过。
+                    // 占位符在内部 p[data-placeholder] 上，用 CSS content 显示，这里只改属性、不改用户输入。
+                    if (node.getAttribute('contenteditable') === 'true') {
+                        GengXin_Placeholder_ShuXing(node);
+                        FanYi_ShuXing(node);
+                        continue;
+                    }
                 }
                 FanYi_ShuXing(node);
                 var children = node.childNodes;
@@ -1640,6 +1646,13 @@
                     if (!piLiang && (node.nodeType === Node.ELEMENT_NODE || node.nodeType === Node.TEXT_NODE)) {
                         TianJia_DaiChuLi(node);
                     }
+                }
+            } else if (m.type === 'attributes' && m.target && m.target.getAttribute) {
+                var shuXingMing = m.attributeName;
+                if (shuXingMing === 'data-placeholder' || shuXingMing === 'placeholder' || shuXingMing === 'aria-placeholder') {
+                    var yuanWen = m.target.getAttribute(shuXingMing);
+                    var yiWen = yuanWen && (ChaZhao_FanYi(yuanWen) || TiHuan_BuFen_WenBen(yuanWen));
+                    if (yiWen && yiWen !== yuanWen) m.target.setAttribute(shuXingMing, yiWen);
                 }
             }
         }

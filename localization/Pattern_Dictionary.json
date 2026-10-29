@@ -1,6 +1,6 @@
 {
   "description": "动态文本正则替换（MoShi_FanYi）。",
-  "updatedAt": "2026-08-13",
+  "updatedAt": "2026-10-27",
   "patterns": [
     {
       "regex": "^(\\d+) requests? remaining$",
@@ -1196,6 +1196,11 @@
       "regex": "^([\\d,.]+(?:K|M)?)\\s+out of\\s+([\\d,.]+(?:K|M)?)\\s+tokens$",
       "flags": "i",
       "replacement": "$1 / $2 token"
+    },
+    {
+      "regex": "^On ([A-Za-z0-9][A-Za-z0-9 ._-]{0,80})$",
+      "flags": "",
+      "replacement": "在 $1"
     }
   ]
 }
